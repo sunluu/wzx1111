@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #container{
+            width:320px;
+            height:200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            position: relative;
+        }
+        #container .ul1{
+            width: 600px;
+            }
+        #container .ul1 li{
+            float:left;
+            font-size: 40px;
+            width:100px;
+            height:100px;
+            background-color: black;
+            color: white;
+            margin-right: 10px;
+            text-align: center;
+        }
+#container .div1{
+    position: absolute;
+    bottom:20px;
+    left:50%;
+    transform: translateX(-50%);
+}
+        #container .div1 span{
+            background: #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul class="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="div1">
+        <span id="left">向左</span>
+        <span id="right">向右</span>
+    </div>
+</div>
+<script>
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <demo1></demo1>
+    <demo1></demo1>
+    {{msg}}
+</div>
+<div id="app2">
+    <demo></demo>
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+            data:{
+            msg:'xx'
+        },
+        components:{
+            demo1:{
+                template:"<div>didv1 <h1>hhhhhhhh</h1></div>"
+
+            }
+        }
+
+    }
+    )
+</script>
+</body>
+</html>

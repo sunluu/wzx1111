@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-1.12.4.js"></script>
+<script>
+
+       function* fn(){
+           var x =  2 * (yield 3+5);
+           var y = yield x / 4;
+           return y;
+       }
+       var gen = fn();
+       var a =gen.next());
+       console.log(gen.next(a.value));
+       console.log(gen.next(3));
+
+</script>
+</body>
+</html>

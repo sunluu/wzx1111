@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #dialog-box{
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            background: #ccc;
+        }
+        .dialog-title{
+            height: 40px;
+            background: pink;
+            line-height: 40px;
+        }
+        .close{
+            float: right;
+            line-height: 40px;
+
+        }
+        .content{
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="login">登录</button>
+    <button @click="reg">注册</button>
+    <my-dialog title="登录" v-show="isLoginShow" @fclose="close">//如果点击的是登录，就执行login,反之
+        用户名：<input type="text">
+        <br>
+        密码是：<input type="password">
+        <input type="submit">
+    </my-dialog>
+    <my-dialog title="注册"  v-show="isRegShow" @fclose="close">//必须和下面一样函数都是close
+        用户名：<input type="text">
+        <br>
+        密码是：<input type="password">
+        <br>
+        邮箱是：<input type="text">
+        <br>
+        <input type="submit"><input type="reset">
+    </my-dialog>
+</div>
+
+<script type="text/x-template" id="my-dialog">//组件，谁调用他谁就是爹
+    <div id="dialog-box">//父元素
+        <div class="dialog-title">
+            <span class="title-name">{{title}}</span>//子元素
+            <span class="close" @click="$emit('fclose',1,2)">[X]</span>//这个close先执行，子往父元素传值$emit
+        </div>//fclose关掉当前对话框。都结束
+        <div class="content">
+            <slot>
+                用户名：<input type="text">
+                <br>
+                密码是：<input type="password">//如果上面有值就覆盖这个值，否则不覆盖slot
+            </slot>
+        </div>
+    </div>
+</script>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            isLoginShow:false,
+            isRegShow:false
+        },
+        methods:{
+            login(){
+                this.isLoginShow=true;
+                this.isRegShow = false;
+            },
+            reg(){
+                this.isRegShow=true;
+                this.isLoginShow = false;
+            },
+            close(a,b){
+                this.isRegShow = false;
+                this.isLoginShow = false;//a和b是上面emit传值时传入的
+            }
+        },
+        components:{
+            "my-dialog":{
+                template:'#my-dialog',//相当于demol
+                props:['title']//父元素往子元素传值
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
